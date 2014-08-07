@@ -14,3 +14,26 @@
     </div>
   </div>
 {% endmacro %}
+
+{% macro aviary_image_file_input(name, slug, src) %}
+ <section class="aviary background-image-input {{ slug }}" data-aviary-type="{{ slug }}"
+          data-theme="light" data-force-crop-preset='["{{ name }}", "320x240"]'
+          data-force-crop-message="{{ _('Crop the image to these dimensions.') }}">
+    {# Image URL input. #}
+    <div class="url-inputs" data-multiple="false"
+         data-placeholder="{{ _('Enter an image URL or select a file...') }}"></div>
+
+    {# Image input. #}
+    <input type="file" accept="image/*" name="background-image-{{ slug }}">
+
+    {# Image size. #}
+    <p class="image-size hidden"></p>
+
+    {# Preview. #}
+    <img id="aviary-{{ slug }}" class="preview hidden">
+
+    {# Data URI. #}
+    <input class="processed-image" type="hidden" name="image-{{ slug }}"
+           data-height="128" data-width="128">
+  </section>
+{% endmacro %}
