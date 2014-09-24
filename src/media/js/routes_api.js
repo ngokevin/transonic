@@ -21,5 +21,7 @@ define('routes_api', [], function() {
         'feed-builder': '/api/v2/feed/builder/',
         'feed-element-search': '/api/v2/feed/elements/search/',
         'search': '/api/v1/apps/search/suggest?cache=1&vary=0&filtering=0',
+
+        'consumer_info': '/api/v2/fireplace/consumer-info/',
     };
 });
