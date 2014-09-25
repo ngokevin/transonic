@@ -152,8 +152,9 @@ define('aviary', ['defer', 'jquery', 'l10n', 'z'], function(defer, $, l10n, z) {
 
         $(this).closest('.aviary').find('[type="url"]').val($input.val());
     }).on('click', '.aviary .clear-image', function() {
-        $('.aviary input').val('');
-        $('.aviary .preview').attr('src', '').hide();
+        var $parent = $(this).closest('.aviary');
+        $parent.find('input').val('');
+        $parent.find('.preview').attr('src', '').hide();
     });
 
     return {
