@@ -1,7 +1,9 @@
 define('routes_api', [], function() {
     return {
-        'login': '/api/v1/account/login/',
-        'logout': '/api/v1/account/logout/',
+        'fxa-login': '/api/v2/account/fxa-login/',
+        'login': '/api/v2/account/login/',
+        'logout': '/api/v2/account/logout/',
+        'site-config': '/api/v2/services/config/site/?serializer=commonplace',
 
         'app': '/api/v1/apps/app/{0}/?cache=1&vary=0',
         'collections': '/api/v2/feed/collections/',
@@ -21,8 +23,5 @@ define('routes_api', [], function() {
         'feed-builder': '/api/v2/feed/builder/',
         'feed-element-search': '/api/v2/feed/elements/search/',
         'search': '/api/v1/apps/search/suggest?cache=1&vary=0&filtering=0',
-
-        'consumer_info': '/api/v2/fireplace/consumer-info/',
-        'fxa-login': '/api/v2/account/fxa-login/',
     };
 });
