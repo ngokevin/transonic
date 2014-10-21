@@ -5,6 +5,7 @@
   "dependencies": {
     "commonplace": "*",
     "marketplace-constants": "*",
+    "marketplace-frontend": "7.0.1",
 
     "almond": "0.2.9",
     "jquery": "2.0.2",
