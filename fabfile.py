@@ -11,7 +11,6 @@ fabdeploytools.envs.loadenv(os.path.join('/etc/deploytools/envs',
                                          settings.CLUSTER))
 TRANSONIC = os.path.dirname(__file__)
 ROOT = os.path.dirname(TRANSONIC)
-COMMONPLACE = '%s/node_modules/commonplace/bin/commonplace' % TRANSONIC
 
 
 @task
@@ -26,9 +25,11 @@ def pre_update(ref):
 def update():
     with lcd(TRANSONIC):
         local('npm install')
-        local('npm install --force commonplace@0.4.22')
-        local('%s includes' % COMMONPLACE)
-        local('%s langpacks' % COMMONPLACE)
+        local('node_modules/.bin/bower update --allow-root')
+        local('make update')
+        local('cp src/media/js/settings_local_hosted.js src/media/js/settings_local.js')
+        local('make build')
+        local('node_modules/.bin/commonplace langpacks')
 
 
 @task

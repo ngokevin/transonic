@@ -1,34 +1,17 @@
 console.log('Firefox Marketplace Curation Tools');
 
-require.config({
-    enforceDefine: true,
-    paths: {
-        'jquery': 'lib/jquery-2.0.2',
-        'underscore': 'lib/underscore',
-        'nunjucks': 'lib/nunjucks',
-        'nunjucks.compat': 'lib/nunjucks.compat',
-        'templates': '../../templates',
-        'settings': ['settings_local', 'settings'],
-        'format': 'lib/format',
-        'site_config': 'commonplace/site_config'
-    }
-});
-
-define(
-    'main',
-    [
-        'helpers',  // Must come before mostly everything else.
-        'helpers_local',
-        // 'forms',  // Comment this if your app has no forms.
-        'l10n',
-        'log',
-        'login',  // Comment this if your app does not have accounts.
-        'navigation',
-        'templates',
-        'user',  // Comment this if your app does not have accounts.
-        'z'
-    ],
-function() {
+define('main', [
+    'helpers',  // Must come before mostly everything else.
+    'helpers_local',
+    // 'forms',  // Comment this if your app has no forms.
+    'l10n',
+    'log',
+    'login',  // Comment this if your app does not have accounts.
+    'navigation',
+    'templates',
+    'user',  // Comment this if your app does not have accounts.
+    'z'
+], function() {
     var console = require('log')('main');
     var urls = require('urls');
     var user = require('user');

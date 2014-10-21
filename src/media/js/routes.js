@@ -14,28 +14,21 @@ var routes = window.routes = [
     {'pattern': root + 'feed$', 'view_name': 'feed_builder'}
 ];
 
-// Only `require.js` has `window.require.defined`, so we can use this to
-// sniff for whether we're using the minified bundle or not. (In production
-// we use commonplace's `amd.js`.)
-if (window.require.hasOwnProperty('defined')) {
-    // The minified JS bundle doesn't need some dev-specific JS views.
-    // Those go here.
-    routes = routes.concat([
-        {'pattern': '^/tests$', 'view_name': 'tests'}
-    ]);
-}
-
-define(
-    'routes',
-    routes.map(function(i) {return 'views/' + i.view_name;}),
-    function() {
-        for (var i = 0; i < routes.length; i++) {
-            var route = routes[i];
-            var view = require('views/' + route.view_name);
-            route.view = view;
-        }
-        return routes;
+define('routes', [
+    'views/403',
+    'views/create',
+    'views/edit',
+    'views/feed_builder' ,
+    'views/home',
+    'views/home',
+    'views/listing',
+    'views/login'
+], function() {
+    for (var i = 0; i < routes.length; i++) {
+        var route = routes[i];
+        var view = require('views/' + route.view_name);
+        route.view = view;
     }
-);
-
+    return routes;
+});
 })();
