@@ -3,7 +3,7 @@
   "name": "marketplace-editorial-dash",
   "version": "0.0.0",
   "dependencies": {
-    "commonplace": "*",
+    "commonplace": "0.6.0",
     "marketplace-constants": "*",
     "marketplace-frontend": "7.0.1",
 
