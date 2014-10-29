@@ -17,27 +17,29 @@ define('views/feed_builder', ['forms_transonic', 'jquery', 'jquery-sortable', 'f
         requests.get(urls.api.url('feed-items', [], {'region': region,
                                                      'ordering': 'order',
                                                      'filtering': 0}), true).always(function(feed_items) {
-            feed_items = feed_items.objects;
-            var $feed = $('.localized').addClass('hidden')
-                                       .filter('[data-region=' + region + ']').removeClass('hidden');
-            modified_regions.push(region);
+            if (feed_items.objects && feed_items.objects.length) {
+                feed_items = feed_items.objects;
+                var $feed = $('.localized').addClass('hidden')
+                                           .filter('[data-region=' + region + ']').removeClass('hidden');
+                modified_regions.push(region);
 
-            for (var i = 0; i < feed_items.length; i++) {
-                var type = feed_items[i].item_type;
-                if (type == 'shelf') {
-                    // Don't render shelves because they are immutable in feed.
-                    continue;
+                for (var i = 0; i < feed_items.length; i++) {
+                    var type = feed_items[i].item_type;
+                    if (type == 'shelf') {
+                        // Don't render shelves because they are immutable in feed.
+                        continue;
+                    }
+
+                    var context = {
+                        feed: require('feed'),
+                        is_builder: true
+                    };
+                    context[type] = feed_items[i][type];
+                    var $feed_element = $(nunjucks.env.render(format('listing/{0}.html', [type]), context));
+
+                    models('feed-' + type).cast(feed_items[i][type]);
+                    append($feed, $feed_element);
                 }
-
-                var context = {
-                    feed: require('feed'),
-                    is_builder: true
-                };
-                context[type] = feed_items[i][type];
-                var $feed_element = $(nunjucks.env.render(format('listing/{0}.html', [type]), context));
-
-                models('feed-' + type).cast(feed_items[i][type]);
-                append($feed, $feed_element);
             }
 
             $('.feeds .loading').hide();
