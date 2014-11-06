@@ -15,6 +15,7 @@
     "commonplace": "0.6.45",
     "gulp": "3.8.x",
     "marketplace-gulp": "1.0.0"
+    "node.extend": "1.1.2"
   },
   "devDependencies": {
     "casperjs": "^1.1.0-beta3"
