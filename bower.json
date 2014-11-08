@@ -3,9 +3,10 @@
   "name": "marketplace-editorial-dash",
   "version": "0.0.0",
   "dependencies": {
-    "commonplace": "0.6.45",
-    "marketplace-constants": "*",
+    "commonplace": "0.6.49",
     "marketplace-frontend": "7.0.1",
+    "marketplace-constants": "*",
+    "marketplace-core-modules": "1.0.1",
 
     "almond": "0.2.9",
     "jquery": "2.0.2",
