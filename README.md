@@ -1,5 +1,5 @@
-Marketplace editorial and curation tools. This tool is used to maintain the
-Feed for the Firefox Marketplace.
+The frontend for the editorial and curation tools for the Firefox Marketplace.
+Used to manage the content of the Marketplace Feed.
 
 - [Marketplace frontend documentation](https://marketplace-frontend.readthedocs.org)
 - [Marketplace documentation](https://marketplace.readthedocs.org)
