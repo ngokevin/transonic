@@ -10,6 +10,7 @@ Used to manage the content of the Marketplace Feed.
 ## Installation
 
 ```bash
-make init
+npm install
+make install
 make serve
 ```
