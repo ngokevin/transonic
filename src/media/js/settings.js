@@ -67,6 +67,7 @@ define('settings', ['l10n', 'settings_local', 'underscore'], function(l10n, sett
             'me': gettext('Montenegro'),
             'ni': gettext('Nicaragua'),
             'pa': gettext('Panama'),
+            'ph': gettext('Philippines'),
             'pe': gettext('Peru'),
             'pl': gettext('Poland'),
             'rs': gettext('Serbia'),
