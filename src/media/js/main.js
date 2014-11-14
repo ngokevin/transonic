@@ -61,7 +61,7 @@ define('main', [
     });
 
     z.page.on('navigate', function(e, url) {
-        if (url == urls.reverse('login')) {
+        if ([urls.reverse('login'), urls.reverse('fxa_authorize')].indexOf(url)) {
             return;
         }
         if (!user.logged_in()) {
