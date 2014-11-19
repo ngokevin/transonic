@@ -5,14 +5,14 @@
     <label>{{ _('Background Image') }}</label>
     <div class="inner">
       {{ aviary_image_file_input(_('Feed Banner'), 'feed-banner',
-                                 obj.background_image, feed_type, '300x90') }}
+                                 obj.background_image, feed_type, '10:3') }}
     </div>
   </div>
   <div class="background-image bg-banner-landing field top-hat-field" data-error-field="background-image-landing">
     <label>{{ _('Shelf Landing Image') }}</label>
     <div class="inner">
       {{ aviary_image_file_input(_('Shelf Landing'), 'shelf-landing',
-                                 obj.background_image_landing, feed_type, '320x150') }}
+                                 obj.background_image_landing, feed_type, '32:15') }}
     </div>
   </div>
 {% else %}
@@ -20,7 +20,7 @@
     <label>{{ _('Background Image') }}</label>
     <div class="inner">
       {{ aviary_image_file_input(_('Feed Banner'), 'feed-banner',
-                                 obj.background_image, feed_type, '320x240') }}
+                                 obj.background_image, feed_type, '4:3') }}
       {# {{ image_file_input(_('Shelf Landing'), 'shelf-landing') }} #}
     </div>
   </div>
