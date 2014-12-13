@@ -55,5 +55,7 @@ tags
 tests/captures/*
 yulelog_*
 
+src/media/css/lib/regions.styl
+src/media/img/icons/regions/
 src/media/js/feed.js
 src/media/js/edbrands.js

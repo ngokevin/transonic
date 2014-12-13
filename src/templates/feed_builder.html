@@ -5,13 +5,13 @@
      {% include "listing/listing.html" %}
     </div>
   </section>
-  
+
   <section class="island feed-column c">
     <form>
       <div class="field has-pretty-select feed-selector">
         <div class="pretty-select">
           <select class="feed-region-switcher" name="feed-region">
-          {% for region_slug, region_name in settings.REGION_CHOICES_SLUG|items %}
+          {% for region_slug, region_name in REGION_CHOICES %}
             <option value="{{ region_slug }}" {{ 'selected' if region_slug == 'restofworld' }}>
               {{ region_name }}
             </option>
@@ -25,7 +25,7 @@
       <div class="loading">
         <i class="fa fa-spinner fa-spin"></i>
       </div>
-      {% for region_slug, region_name in settings.REGION_CHOICES_SLUG|items %}
+      {% for region_slug, region_name in REGION_CHOICES %}
         <div class="region-feed localized {{ 'hidden' if region_slug != 'restofworld' }}"
              data-region="{{ region_slug }}">
           <h2 class="empty-results">

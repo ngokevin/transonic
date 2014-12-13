@@ -1,8 +1,12 @@
-define('helpers_local', ['feed', 'nunjucks', 'urls', 'utils_local', 'z'], function(feed, nunjucks, urls, utils_local, z) {
+define('helpers_local',
+    ['feed', 'nunjucks', 'regions', 'underscore', 'urls', 'utils_local', 'z'],
+    function(feed, nunjucks, regions, _, urls, utils_local, z) {
     var filters = nunjucks.require('filters');
     var globals = nunjucks.require('globals');
 
     globals.feed = feed;
+    globals.REGIONS = regions.REGION_CHOICES_SLUG;
+    globals.REGION_CHOICES = regionTransform(regions.REGION_CHOICES_SLUG);
 
     function unslug(str) {
         // Change underscores to spaces and text-transform uppercase.
@@ -14,6 +18,13 @@ define('helpers_local', ['feed', 'nunjucks', 'urls', 'utils_local', 'z'], functi
 
     function indexOf(arr, val) {
         return arr.indexOf(val);
+    }
+
+    function regionTransform(regions) {
+        // Turn regions dict into sorted list of tuples.
+        return _.sortBy(utils_local.items(regions), function(region) {
+            return region[1];
+        });
     }
 
     // Functions provided in the default context.
