@@ -6,30 +6,34 @@
     <title>Firefox Marketplace Curation Tools</title>
     <link rel="stylesheet" href="/media/css/splash.styl.css">
 
-    <!-- These styles need to come first. -->
-    <link rel="stylesheet" href="/media/css/reset.styl.css">
-    <link rel="stylesheet" href="/media/css/typography.styl.css">
-    <link rel="stylesheet" href="/media/css/site.styl.css">
-    <link rel="stylesheet" href="/media/css/header.styl.css">
-
-    <!-- These styles don't need to be in an order. -->
-    <link rel="stylesheet" href="/media/css/app_selector.styl.css">
-    <link rel="stylesheet" href="/media/css/builder.styl.css">
-    <link rel="stylesheet" href="/media/css/buttons.styl.css">
-    <link rel="stylesheet" href="/media/css/collections.styl.css">
-    <link rel="stylesheet" href="/media/css/create.styl.css">
-    <link rel="stylesheet" href="/media/css/feed.styl.css">
-    <link rel="stylesheet" href="/media/css/font-awesome.styl.css">
-    <link rel="stylesheet" href="/media/css/forms.styl.css">
-    <link rel="stylesheet" href="/media/css/form-modal.styl.css">
-    <link rel="stylesheet" href="/media/css/lightbox.styl.css">
-    <link rel="stylesheet" href="/media/css/manage.styl.css">
-    <link rel="stylesheet" href="/media/css/menu.styl.css">
-    <link rel="stylesheet" href="/media/css/modal.styl.css">
-    <link rel="stylesheet" href="/media/css/notification.styl.css">
-    <link rel="stylesheet" href="/media/css/preview_tray.styl.css">
-    <link rel="stylesheet" href="/media/css/stars.styl.css">
-    <link rel="stylesheet" href="/media/css/transsonic.styl.css">
+    {% if compiled %}
+      <link rel="stylesheet" href="/media/css/splash.css">
+      <link rel="stylesheet" href="/media/css/include.css">
+    {% else %}
+      <!-- These styles need to come first. -->
+      <link rel="stylesheet" href="/media/css/reset.styl.css">
+      <link rel="stylesheet" href="/media/css/typography.styl.css">
+      <link rel="stylesheet" href="/media/css/site.styl.css">
+      <link rel="stylesheet" href="/media/css/header.styl.css">
+      <!-- These styles don't need to be in an order. -->
+      <link rel="stylesheet" href="/media/css/app_selector.styl.css">
+      <link rel="stylesheet" href="/media/css/builder.styl.css">
+      <link rel="stylesheet" href="/media/css/buttons.styl.css">
+      <link rel="stylesheet" href="/media/css/collections.styl.css">
+      <link rel="stylesheet" href="/media/css/create.styl.css">
+      <link rel="stylesheet" href="/media/css/feed.styl.css">
+      <link rel="stylesheet" href="/media/css/font-awesome.styl.css">
+      <link rel="stylesheet" href="/media/css/forms.styl.css">
+      <link rel="stylesheet" href="/media/css/form-modal.styl.css">
+      <link rel="stylesheet" href="/media/css/lightbox.styl.css">
+      <link rel="stylesheet" href="/media/css/manage.styl.css">
+      <link rel="stylesheet" href="/media/css/menu.styl.css">
+      <link rel="stylesheet" href="/media/css/modal.styl.css">
+      <link rel="stylesheet" href="/media/css/notification.styl.css">
+      <link rel="stylesheet" href="/media/css/preview_tray.styl.css">
+      <link rel="stylesheet" href="/media/css/stars.styl.css">
+      <link rel="stylesheet" href="/media/css/transsonic.styl.css">
+    {% endif %}
   </head>
   <body class="home" data-media="" data-languages="[]">
 
@@ -50,6 +54,10 @@
     <script src="https://dme0ih8comzn4.cloudfront.net/js/feather.js"></script>
 
     <script src="/media/js/l10n.js"></script>
-    <script data-main="/media/js/main" src="/media/js/lib/require.js"></script>
+    {% if compiled %}
+      <script src="/media/js/include.js" defer></script>
+    {% else %}
+      <script data-main="/media/js/main" src="/media/js/lib/require.js"></script>
+    {% endif %}
   </body>
 </html>
