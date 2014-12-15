@@ -5,7 +5,7 @@
   <div class="pretty-select">
     <select id="region" name="region">
     <option value="" {{ 'selected' if not region_selected }}>
-    {% for region_slug, region_name in settings.REGION_CHOICES_SLUG|items %}
+    {% for region_slug, region_name in REGION_CHOICES %}
       <option value="{{ region_slug }}" {{ 'selected' if region_slug == region_selected }}>
         {{ region_name }}
       </option>
