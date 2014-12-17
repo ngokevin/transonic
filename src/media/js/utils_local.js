@@ -4,7 +4,9 @@ define('utils_local', ['jquery', 'log', 'notification', 'nunjucks', 'z'], functi
     function build_localized_field(name) {
         var data = {};
         $('.localized[data-name="' + name + '"]').each(function(i, field) {
-            data[this.getAttribute('data-lang')] = this.value;
+            if (this.value) {
+                data[this.getAttribute('data-lang')] = this.value;
+            }
         });
         return data;
     };
