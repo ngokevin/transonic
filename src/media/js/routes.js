@@ -12,6 +12,7 @@ var routes = window.routes = [
     {'pattern': root + 'manage$', 'view_name': 'listing'},
     {'pattern': root + 'manage/([^/<>"\']+)/([^/<>"\']+)$', 'view_name': 'edit'},
     {'pattern': '/fxa-authorize$', 'view_name': 'fxa_authorize'},
+    {'pattern': '^/tests$', 'view_name': 'tests'}
 ];
 
 define('routes', [
@@ -23,6 +24,7 @@ define('routes', [
     'views/home',
     'views/listing',
     'views/login',
+    'views/tests'
 ], function() {
     for (var i = 0; i < routes.length; i++) {
         var route = routes[i];

@@ -33,6 +33,7 @@ define('forms_transonic',
         if (data.type !== feed.FEEDAPP_QUOTE) {
             data.pullquote_attribution = data.pullquote_rating = '';
         }
+        data = populate_empty_translations(data, ['description']);
 
         cache.flush();
         return save_feed_app(data, slug);
@@ -65,6 +66,9 @@ define('forms_transonic',
         if (!$.isEmptyObject(errors)) {
             return defer.Deferred().reject(errors);
         }
+
+        // Sanitize data before submitting to API.
+        data = populate_empty_translations(data, ['description', 'name']);
 
         cache.flush();
         return save_collection(data, slug);
@@ -104,13 +108,15 @@ define('forms_transonic',
             slug: $form.find('[name="slug"]').val(),
         };
         var $preview = $form.find('.fileinput .preview');
-        console.log(JSON.stringify(data));
 
         // Validate.
         var errors = validate.shelf(data, $preview);
         if (!$.isEmptyObject(errors)) {
             return defer.Deferred().reject(errors);
         }
+
+        // Sanitize data before submitting to API.
+        data = populate_empty_translations(data, ['description', 'name']);
 
         cache.flush();
         return save_shelf(data, slug);
@@ -291,12 +297,44 @@ define('forms_transonic',
         return apps;
     }
 
+    function get_translated_locales(data, localized_fields) {
+        // Iterate over each of the passed localized fields, returning an array
+        // containing each language with a translation.
+        var locales = [];
+        localized_fields.forEach(function(field_name) {
+            var field_data = data[field_name];
+            $.each(field_data, function(locale, translation) {
+                if (!!translation && locales.indexOf(locale) == -1) {
+                    locales.push(locale);
+                }
+            });
+        });
+        return locales;
+    }
+
+    function populate_empty_translations(data, localized_fields) {
+        // Santize the passed data by making sure that any locale that has
+        // a translation in one of the passed fields has a translation (even if
+        // it is an empty string) in each of the passed fields.
+        var locales = get_translated_locales(data, localized_fields);
+        localized_fields.forEach(function(field_name) {
+            locales.forEach(function(locale) {
+                if (!(locale in data[field_name])) {
+                    data[field_name][locale] = '';
+                }
+            });
+        });
+        return data;
+    }
+
     return {
         brand: brand,
         collection: collection,
         feed_app: feed_app,
         feed_items: feed_items,
+        get_translated_locales: get_translated_locales,
         shelf: shelf,
+        populate_empty_translations: populate_empty_translations,
         publish_shelf: publish_shelf,
         unpublish_shelf: unpublish_shelf,
     };
