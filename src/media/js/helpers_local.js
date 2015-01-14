@@ -1,9 +1,13 @@
 define('helpers_local',
-    ['feed', 'nunjucks', 'regions', 'underscore', 'urls', 'utils_local', 'z'],
-    function(feed, nunjucks, regions, _, urls, utils_local, z) {
+    ['collection_colors', 'feed', 'nunjucks', 'regions', 'underscore', 'urls',
+     'utils_local', 'z'],
+    function(collection_colors, feed, nunjucks, regions, _, urls,
+             utils_local, z) {
     var filters = nunjucks.require('filters');
     var globals = nunjucks.require('globals');
 
+    globals.COLLECTION_COLORS = utils_local.items(
+        collection_colors.COLLECTION_COLORS);
     globals.feed = feed;
     globals.REGIONS = regions.REGION_CHOICES_SLUG;
     globals.REGION_CHOICES = regionTransform(regions.REGION_CHOICES_SLUG);
@@ -27,8 +31,13 @@ define('helpers_local',
         });
     }
 
+    function keys(obj) {
+        return Object.keys(obj);
+    }
+
     // Functions provided in the default context.
     var helpers = {
+        keys: keys,
         indexOf: indexOf,
         api_base: urls.api.base.url,
     };

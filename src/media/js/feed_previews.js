@@ -93,7 +93,7 @@ define('feed_previews',
     function feed_app_factory() {
         return {
             app: app_factory(),
-            background_color: $('.bg-color input:checked').val(),
+            background_color: $('.bg-color input:checked').data('color'),
             background_image: $('.background-image-input .preview').attr('src'),
             description: $('.description .localized:not(.hidden').val().escape() || '',
             preview: preview_factory(),
@@ -119,7 +119,7 @@ define('feed_previews',
         return {
             apps: apps,
             app_count: apps.length,
-            background_color: $('.bg-color input:checked').val(),
+            background_color: $('.bg-color input:checked').data('color'),
             background_image: $('.background-image-input .preview').attr('src'),
             description: $('.description .localized:not(.hidden').val().escape() || '',
             name: $('.name .localized:not(.hidden').val().escape() || 'A Sample Collection',
