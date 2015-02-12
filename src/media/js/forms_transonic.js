@@ -11,8 +11,6 @@ define('forms_transonic',
         // Gather data.
         var data = {
             app: $form.find('[name="app"]').val(),
-            // Deprecated.
-            background_color: $form.find('.bg-color input:checked').data('color'),
             background_image_upload_url: $form.find('.processed-aviary-url').val(),
             color: $form.find('.bg-color input:checked').val(),
             description: utils_local.build_localized_field('description'),
@@ -51,8 +49,6 @@ define('forms_transonic',
         // Gather data.
         var data = {
             apps: is_grouped ? get_app_groups($items) : get_app_ids($items),
-            // Deprecated.
-            background_color: $form.find('.bg-color input:checked').data('color'),
             background_image_upload_url: $form.find('.processed-aviary-url').val(),
             color: $form.find('.bg-color input:checked').val(),
             type: type,
