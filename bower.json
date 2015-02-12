@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "dependencies": {
     "marketplace-frontend": "7.0.1",
-    "marketplace-constants": "0.5.2",
+    "marketplace-constants": "0.5.3",
     "marketplace-core-modules": "1.6.2",
 
     "almond": "0.2.9",
