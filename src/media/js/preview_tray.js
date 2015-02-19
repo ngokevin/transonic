@@ -1,7 +1,7 @@
 /* A Transonic-specific preview tray that selects even when a single image
    and allows passing in an initial selected image. */
 define('preview_tray',
-    ['flipsnap', 'log', 'models', 'templates', 'capabilities', 'shothandles', 'underscore', 'z'],
+    ['flipsnap', 'core/log', 'core/models', 'templates', 'core/capabilities', 'shothandles', 'underscore', 'core/z'],
     function(Flipsnap, log, models, nunjucks, caps, handles, _, z) {
 
     var console = log('previews');

@@ -1,6 +1,6 @@
 define('helpers_local',
-    ['collection_colors', 'feed', 'nunjucks', 'regions', 'underscore', 'urls',
-     'utils_local', 'z'],
+    ['collection_colors', 'feed', 'core/nunjucks', 'regions', 'underscore', 'core/urls',
+     'utils_local', 'core/z'],
     function(collection_colors, feed, nunjucks, regions, _, urls,
              utils_local, z) {
     var filters = nunjucks.require('filters');

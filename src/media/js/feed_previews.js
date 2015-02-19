@@ -1,9 +1,10 @@
 define('feed_previews',
-    ['collection_colors', 'feed', 'l10n', 'models', 'templates', 'utils_local',
-     'z'],
-    function(colors, feed, l10n, models, nunjucks, utils,
-             z) {
+    ['collection_colors', 'feed', 'core/l10n', 'core/models', 'templates',
+     'utils_local', 'core/z'],
+    function(colors, feed, l10n, models, nunjucks,
+             utils, z) {
     var colors = colors.COLLECTION_COLORS;
+
     var gettext = l10n.gettext;
 
     // Constants are constant.

@@ -1,5 +1,5 @@
 define('forms_transonic',
-    ['app_selector', 'cache', 'defer', 'feed', 'format', 'jquery', 'jquery.fakefilefield', 'l10n', 'log', 'nunjucks', 'requests', 'storage', 'urls', 'utils', 'utils_local', 'validate_transonic', 'z'],
+    ['app_selector', 'core/cache', 'core/defer', 'feed', 'core/format', 'jquery', 'jquery.fakefilefield', 'core/l10n', 'core/log', 'core/nunjucks', 'core/requests', 'core/storage', 'core/urls', 'core/utils', 'utils_local', 'validate_transonic', 'core/z'],
     function(app_select, cache, defer, feed, format, $, fakefilefield, l10n, log, nunjucks, requests, storage, urls, utils, utils_local, validate, z) {
     'use strict';
     var format = format.format;

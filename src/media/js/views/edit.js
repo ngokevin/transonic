@@ -1,5 +1,5 @@
 define('views/edit',
-    ['apps_widget', 'feed_previews', 'fields_transonic', 'format', 'forms_transonic', 'jquery', 'jquery.fakefilefield', 'l10n', 'log', 'notification', 'preview_tray', 'requests', 'templates', 'urls', 'utils', 'utils_local', 'z'],
+    ['apps_widget', 'feed_previews', 'fields_transonic', 'core/format', 'forms_transonic', 'jquery', 'jquery.fakefilefield', 'core/l10n', 'core/log', 'core/notification', 'preview_tray', 'core/requests', 'templates', 'core/urls', 'core/utils', 'utils_local', 'core/z'],
     function(apps_widget, feed_previews, fields_transonic, format, forms_transonic, $, fakefilefield, l10n, log, notification, preview_tray, requests, nunjucks, urls, utils, utils_local, z) {
     'use strict';
     var gettext = l10n.gettext;

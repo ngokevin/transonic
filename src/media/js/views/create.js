@@ -1,5 +1,5 @@
 define('views/create',
-    ['apps_widget', 'feed_previews', 'fields_transonic', 'forms_transonic', 'jquery', 'jquery.fakefilefield', 'l10n', 'log', 'notification', 'requests', 'templates', 'urls', 'utils', 'utils_local', 'z'],
+    ['apps_widget', 'feed_previews', 'fields_transonic', 'forms_transonic', 'jquery', 'jquery.fakefilefield', 'core/l10n', 'core/log', 'core/notification', 'core/requests', 'templates', 'core/urls', 'core/utils', 'utils_local', 'core/z'],
     function(apps_widget, feed_previews, fields_transonic, forms_transonic, $, fakefilefield, l10n, log, notification, requests, nunjucks, urls, utils, utils_local, z) {
 
     'use strict';

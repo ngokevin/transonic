@@ -1,25 +1,26 @@
 console.log('Firefox Marketplace Curation Tools');
 
-define('main', [
-    'helpers',  // Must come before mostly everything else.
+define('main', ['init'], function() {
+require([
+    'core/helpers',  // Must come before mostly everything else.
     'helpers_local',
     // 'forms',  // Comment this if your app has no forms.
-    'l10n',
-    'log',
-    'login',  // Comment this if your app does not have accounts.
-    'navigation',
+    'core/l10n',
+    'core/log',
+    'core/login',  // Comment this if your app does not have accounts.
+    'core/navigation',
     'templates',
-    'user',  // Comment this if your app does not have accounts.
-    'z'
+    'core/user',  // Comment this if your app does not have accounts.
+    'core/z'
 ], function() {
-    var console = require('log')('main');
-    var urls = require('urls');
-    var user = require('user');
-    var z = require('z');
+    var console = require('core/log')('main');
+    var urls = require('core/urls');
+    var user = require('core/user');
+    var z = require('core/z');
 
     console.log('Dependencies resolved, starting init');
 
-    z.body.addClass('html-' + require('l10n').getDirection());
+    z.body.addClass('html-' + require('core/l10n').getDirection());
 
     z.page.one('loaded', function() {
         console.log('Hiding splash screen');
@@ -37,14 +38,14 @@ define('main', [
         $('#site-footer').html(
             nunjucks.env.render('footer.html'));
 
-        z.body.toggleClass('logged-in', require('user').logged_in());
+        z.body.toggleClass('logged-in', require('core/user').logged_in());
         z.page.trigger('reloaded_chrome');
     }).trigger('reload_chrome');
 
     z.body.on('click', '.site-header .back', function(e) {
         e.preventDefault();
         console.log('← button pressed');
-        require('navigation').back();
+        require('core/navigation').back();
     }).on('click', 'aside', function() {
         $(this).toggleClass('active');
     });
@@ -61,7 +62,7 @@ define('main', [
     });
 
     z.page.on('navigate', function(e, url) {
-        if ([urls.reverse('login'), urls.reverse('fxa_authorize')].indexOf(url)) {
+        if ([urls.reverse('login'), urls.reverse('core/fxa_authorize')].indexOf(url)) {
             return;
         }
         if (!user.logged_in()) {
@@ -83,4 +84,5 @@ define('main', [
     z.page.trigger('loaded');
 
     console.log('Initialization complete');
+});
 });

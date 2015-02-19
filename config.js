@@ -12,8 +12,6 @@ var localConfig = extend(true, {
         'marketplace-constants/dist/js/collection_colors.js': config.LIB_DEST_PATH,
         'marketplace-constants/dist/js/regions.js': config.LIB_DEST_PATH,
         'marketplace-constants/dist/img/regions/*': 'src/media/img/icons/regions/',
-        'marketplace-frontend/src/media/js/edbrands.js': config.JS_DEST_PATH,
-        'marketplace-frontend/src/media/js/feed.js': config.JS_DEST_PATH,
     },
     cssBundles: {
         // Arbitrary CSS bundles to create.

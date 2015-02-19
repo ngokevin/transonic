@@ -1,5 +1,5 @@
 define('views/listing',
-    ['cache', 'feed_previews', 'format', 'jquery', 'l10n', 'log', 'models', 'notification', 'requests', 'settings', 'templates', 'underscore', 'urls', 'utils', 'z'],
+    ['core/cache', 'feed_previews', 'core/format', 'jquery', 'core/l10n', 'core/log', 'core/models', 'core/notification', 'core/requests', 'core/settings', 'templates', 'underscore', 'core/urls', 'core/utils', 'core/z'],
     function(cache, feed_previews, format, $, l10n, log, models, notification, requests, settings, nunjucks, _, urls, utils, z) {
     'use strict';
     var gettext = l10n.gettext;

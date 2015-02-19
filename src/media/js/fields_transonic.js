@@ -1,10 +1,10 @@
 define('fields_transonic',
-    ['app_selector', 'apps_widget', 'aviary', 'feed', 'jquery', 'jquery.fakefilefield', 'log', 'nunjucks', 'preview_tray', 'requests', 'underscore', 'urls', 'utils', 'utils_local', 'validate_transonic', 'z'],
+    ['app_selector', 'apps_widget', 'aviary', 'feed', 'jquery', 'jquery.fakefilefield', 'core/log', 'core/nunjucks', 'preview_tray', 'core/requests', 'underscore', 'core/urls', 'core/utils', 'utils_local', 'validate_transonic', 'core/z'],
     function(app_select, apps_widget, aviary, feed, $, fakefilefield, log, nunjucks, preview_tray, requests, _, urls, utils, utils_local, validator, z) {
     'use strict';
 
     var imageUploads = {};  // keep track of drag-and-drop uploads to stuff into FormData later.
-    var notify = require('notification').notification;
+    var notify = require('core/notification').notification;
 
     z.page.on('keypress', 'form', function(e) {
         if (e.keyCode == 13) {

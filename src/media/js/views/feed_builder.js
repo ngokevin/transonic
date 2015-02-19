@@ -1,5 +1,7 @@
-define('views/feed_builder', ['forms_transonic', 'jquery', 'jquery-sortable', 'format', 'l10n', 'models', 'notification', 'nunjucks', 'requests',  'urls', 'utils', 'z'],
+define('views/feed_builder',
+    ['forms_transonic', 'jquery', 'jquery-sortable', 'core/format', 'core/l10n', 'core/models', 'core/notification', 'core/nunjucks', 'core/requests',  'core/urls', 'core/utils', 'core/z'],
     function(forms_transonic, $, sortable, format, l10n, models, notification, nunjucks, requests, urls, utils, z) {
+
     'use strict';
     var format = format.format;
     var gettext = l10n.gettext;

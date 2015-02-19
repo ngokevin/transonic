@@ -1,4 +1,7 @@
-define('views/403', ['l10n', 'user', 'urls', 'z'], function(l10n, user, urls, z) {
+define('views/403',
+    ['core/l10n', 'core/user', 'core/urls', 'core/z'],
+    function(l10n, user, urls, z) {
+
     var gettext = l10n.gettext;
 
     return function(builder) {
