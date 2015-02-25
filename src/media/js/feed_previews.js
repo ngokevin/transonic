@@ -1,6 +1,8 @@
 define('feed_previews',
-    ['collection_colors', 'feed', 'l10n', 'templates', 'utils_local', 'z'],
-    function(colors, feed, l10n, nunjucks, utils, z) {
+    ['collection_colors', 'feed', 'l10n', 'models', 'templates', 'utils_local',
+     'z'],
+    function(colors, feed, l10n, models, nunjucks, utils,
+             z) {
     var colors = colors.COLLECTION_COLORS;
     var gettext = l10n.gettext;
 
@@ -172,10 +174,11 @@ define('feed_previews',
             var type = $feed_element.data('type');
             var slug = $feed_element.data('slug');
 
-            var feed_element = require('models')('feed-' + type).lookup(slug);
+            feed_element = models('feed-' + type).lookup(slug);
 
             // Polyfill collection colors when we were hardcoding hexes.
-            if (!feed_element.background_color && feed_element.color) {
+            if (type != 'shelf' && !feed_element.background_color &&
+                feed_element.color) {
                 feed_element.background_color = colors[feed_element.color] ||
                                                 colors.sapphire;
             }
