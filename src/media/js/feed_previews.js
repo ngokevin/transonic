@@ -177,8 +177,7 @@ define('feed_previews',
             feed_element = models('feed-' + type).lookup(slug);
 
             // Polyfill collection colors when we were hardcoding hexes.
-            if (type != 'shelf' && !feed_element.background_color &&
-                feed_element.color) {
+            if (type != 'shelf' && feed_element.color) {
                 feed_element.background_color = colors[feed_element.color] ||
                                                 colors.sapphire;
             }
