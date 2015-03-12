@@ -174,9 +174,9 @@ define('fields_transonic',
                 option.classList.remove('highlighted');
             }
         });
-    };
+    }
 
     return {
         highlight_localized: highlight_localized
-    }
+    };
 });

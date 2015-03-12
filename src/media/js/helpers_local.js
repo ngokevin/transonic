@@ -55,12 +55,12 @@ define('helpers_local',
         }
     }
 
-    for (var i in filters_map) {
-        if (filters_map.hasOwnProperty(i)) {
+    for (var filtersProp in filters_map) {
+        if (filters_map.hasOwnProperty(filtersProp)) {
             if (nunjucks.env) {
-                nunjucks.env.addFilter(i, filters_map[i]);
+                nunjucks.env.addFilter(filtersProp, filters_map[filtersProp]);
             }
-            filters[i] = filters_map[i];
+            filters[filtersProp] = filters_map[filtersProp];
         }
     }
 

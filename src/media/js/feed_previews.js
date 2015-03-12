@@ -3,7 +3,7 @@ define('feed_previews',
      'utils_local', 'core/z'],
     function(colors, feed, l10n, models, nunjucks,
              utils, z) {
-    var colors = colors.COLLECTION_COLORS;
+    colors = colors.COLLECTION_COLORS;
 
     var gettext = l10n.gettext;
 
@@ -238,10 +238,10 @@ define('feed_previews',
 
     function stub_globals() {
         // Stub out Fireplace-specific helpers.
-        var stub_globals = nunjucks.require('globals');
-        stub_globals.app_incompat = function() {};
-        stub_globals.has_installed = function() {};
-        stub_globals.imgAlreadyDeferred = function() {return true;};
+        var globals = nunjucks.require('globals');
+        globals.app_incompat = function() {};
+        globals.has_installed = function() {};
+        globals.imgAlreadyDeferred = function() {return true;};
     }
 
     function empty() {

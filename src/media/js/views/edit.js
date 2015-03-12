@@ -113,6 +113,7 @@ define('views/edit',
                 'slug': slug,
                 'title': title,
             }).done(function() {
+                var i;
                 $('.fileinput').fakeFileField();
                 fields_transonic.highlight_localized();
 
@@ -122,7 +123,7 @@ define('views/edit',
 
                     // Calculate which screenshot to initially select.
                     var preview_index = 0;
-                    for (var i = 0; i < obj.app.previews.length; i++) {
+                    for (i = 0; i < obj.app.previews.length; i++) {
                         if (obj.app.previews[i].id === obj.preview.id) {
                             preview_index = i;
                         }
@@ -135,7 +136,7 @@ define('views/edit',
                     if (group) {
                         apps_widget.add_group(obj.apps[0].group);
                     }
-                    for (var i = 0; i < obj.apps.length; i++) {
+                    for (i = 0; i < obj.apps.length; i++) {
                         if (JSON.stringify(obj.apps[i].group) != JSON.stringify(group)) {
                             // If the current app's group is under a different group
                             // than the previous one, that must mean we need to

@@ -1,38 +1,34 @@
 console.log('Firefox Marketplace Curation Tools');
 
-define('main', ['init'], function() {
+define('main', ['routes', 'settings_app'], function() {
+require(['init'], function() {
 require([
-    'core/helpers',  // Must come before mostly everything else.
-    'helpers_local',
-    // 'forms',  // Comment this if your app has no forms.
     'core/l10n',
     'core/log',
-    'core/login',  // Comment this if your app does not have accounts.
+    'core/login',
     'core/navigation',
     'templates',
-    'core/user',  // Comment this if your app does not have accounts.
-    'core/z'
-], function() {
-    var console = require('core/log')('main');
-    var urls = require('core/urls');
-    var user = require('core/user');
-    var z = require('core/z');
+    'core/urls',
+    'core/user',
+    'core/z',
+    'permissions',
+], function(l10n, log, login, navigation, nunjucks, urls, user, z, permissions) {
+    var logger = require('core/log')('main');
 
-    console.log('Dependencies resolved, starting init');
+    logger.log('Dependencies resolved, starting init');
 
     z.body.addClass('html-' + require('core/l10n').getDirection());
 
     z.page.one('loaded', function() {
-        console.log('Hiding splash screen');
+        logger.log('Hiding splash screen');
         $('#splash-overlay').addClass('hide');
         $('main').append(
             nunjucks.env.render('feed_aside.html'));
     });
 
     // Do some last minute template compilation.
-    var nunjucks = require('templates');
     z.page.on('reload_chrome', function() {
-        console.log('Reloading chrome');
+        logger.log('Reloading chrome');
         $('#site-header').html(
             nunjucks.env.render('header.html'));
         $('#site-footer').html(
@@ -44,8 +40,8 @@ require([
 
     z.body.on('click', '.site-header .back', function(e) {
         e.preventDefault();
-        console.log('← button pressed');
-        require('core/navigation').back();
+        logger.log('← button pressed');
+        navigation.back();
     }).on('click', 'aside', function() {
         $(this).toggleClass('active');
     });
@@ -62,10 +58,7 @@ require([
     });
 
     z.page.on('navigate', function(e, url) {
-        if ([urls.reverse('login'), urls.reverse('core/fxa_authorize')].indexOf(url)) {
-            return;
-        }
-        if (!user.logged_in()) {
+        if (!permissions.allowed(url)) {
             z.page.trigger('divert', [urls.reverse('login')]);
         }
     });
@@ -79,10 +72,11 @@ require([
     });
 
     // Perform initial navigation.
-    console.log('Triggering initial navigation');
+    logger.log('Triggering initial navigation');
     z.page.trigger('navigate', [window.location.pathname + window.location.search]);
     z.page.trigger('loaded');
 
-    console.log('Initialization complete');
+    logger.log('Initialization complete');
+});
 });
 });

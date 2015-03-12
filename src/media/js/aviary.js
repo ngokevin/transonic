@@ -159,5 +159,5 @@ define('aviary', ['core/defer', 'jquery', 'core/l10n', 'core/z'], function(defer
 
     return {
         launchEditor: launchEditor
-    }
+    };
 });

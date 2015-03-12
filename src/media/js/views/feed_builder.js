@@ -3,7 +3,7 @@ define('views/feed_builder',
     function(forms_transonic, $, sortable, format, l10n, models, notification, nunjucks, requests, urls, utils, z) {
 
     'use strict';
-    var format = format.format;
+    format = format.format;
     var gettext = l10n.gettext;
 
     // Keep track of what regions we look at to limit the queries on the backend if we publish.
@@ -110,7 +110,7 @@ define('views/feed_builder',
         $feed.find('.feed-elements').append($feed_element.clone());
         $('.feed-elements').sortable({
             onDrop: function($item) {
-                $item.removeClass('dragged').removeAttr('style')
+                $item.removeClass('dragged').removeAttr('style');
                 z.body.removeClass('dragging');
                 z.page.trigger('refresh_preview');
             }
