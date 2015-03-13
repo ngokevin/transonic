@@ -1,5 +1,8 @@
-define('utils_local', ['jquery', 'log', 'notification', 'nunjucks', 'z'], function($, log, notification, nunjucks, z) {
-    var console = log('utils_local');
+define('utils_local',
+    ['jquery', 'core/log', 'core/notification', 'core/nunjucks', 'core/z'],
+    function($, log, notification, nunjucks, z) {
+
+    var logger = log('utils_local');
 
     function build_localized_field(name) {
         var data = {};
@@ -9,7 +12,7 @@ define('utils_local', ['jquery', 'log', 'notification', 'nunjucks', 'z'], functi
             }
         });
         return data;
-    };
+    }
 
     function handle_error(errors) {
         notification.notification({message: gettext('Sorry, we found some errors in the form.')});
@@ -47,16 +50,16 @@ define('utils_local', ['jquery', 'log', 'notification', 'nunjucks', 'z'], functi
 
     function items(obj) {
         // Like Python's dict.items().
-        var items = [];
+        var results = [];
         var keys = Object.keys(obj);
         for (var i = 0; i < keys.length; i++) {
             var item = [];
             item.push(keys[i]);
             item.push(obj[keys[i]]);
-            items.push(item);
+            results.push(item);
         }
-        return items;
-    };
+        return results;
+    }
 
     function clear_errors(error) {
         $('.form-errors').empty();

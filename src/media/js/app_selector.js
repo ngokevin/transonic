@@ -1,6 +1,6 @@
 define('app_selector',
-    ['jquery', 'format', 'l10n', 'log', 'regions', 'requests', 'settings',
-     'templates', 'underscore', 'urls', 'utils', 'z'],
+    ['jquery', 'core/format', 'core/l10n', 'core/log', 'regions', 'core/requests', 'core/settings',
+     'templates', 'underscore', 'core/urls', 'core/utils', 'core/z'],
     function($, format, l10n, log, regions, requests, settings,
              nunjucks, _, urls, utils, z) {
     'use strict';

@@ -1,6 +1,6 @@
 define('helpers_local',
-    ['collection_colors', 'feed', 'nunjucks', 'regions', 'underscore', 'urls',
-     'utils_local', 'z'],
+    ['collection_colors', 'feed', 'core/nunjucks', 'regions', 'underscore', 'core/urls',
+     'utils_local', 'core/z'],
     function(collection_colors, feed, nunjucks, regions, _, urls,
              utils_local, z) {
     var filters = nunjucks.require('filters');
@@ -55,12 +55,12 @@ define('helpers_local',
         }
     }
 
-    for (var i in filters_map) {
-        if (filters_map.hasOwnProperty(i)) {
+    for (var filtersProp in filters_map) {
+        if (filters_map.hasOwnProperty(filtersProp)) {
             if (nunjucks.env) {
-                nunjucks.env.addFilter(i, filters_map[i]);
+                nunjucks.env.addFilter(filtersProp, filters_map[filtersProp]);
             }
-            filters[i] = filters_map[i];
+            filters[filtersProp] = filters_map[filtersProp];
         }
     }
 

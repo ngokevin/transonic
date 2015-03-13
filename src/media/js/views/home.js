@@ -1,4 +1,4 @@
-define('views/home', ['feed_previews', 'l10n'], function(feed_previews, l10n) {
+define('views/home', ['feed_previews', 'core/l10n'], function(feed_previews, l10n) {
 
     var gettext = l10n.gettext;
 

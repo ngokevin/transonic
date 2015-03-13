@@ -1,9 +1,8 @@
-define('settings',
-    ['l10n', 'settings_local', 'underscore'],
-    function(l10n, settings_local, _) {
-    var gettext = l10n.gettext;
+define('settings_app',
+    ['core/settings', 'settings_local'],
+    function(settings, localSettings) {
 
-    return _.defaults(settings_local, {
+    settings._extend({
         app_name: 'transonic',
         init_module: 'main',
         default_locale: 'en-US',
@@ -59,4 +58,6 @@ define('settings',
             'vimpelcom'
         ],
     });
+
+    settings._extend(localSettings);
 });

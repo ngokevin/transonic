@@ -1,5 +1,5 @@
 define('apps_widget',
-    ['app_selector', 'jquery', 'jquery-sortable', 'nunjucks', 'requests', 'settings', 'underscore', 'utils', 'urls', 'z'],
+    ['app_selector', 'jquery', 'jquery-sortable', 'core/nunjucks', 'core/requests', 'core/settings', 'underscore', 'core/utils', 'core/urls', 'core/z'],
     function(app_select, $, sortable, nunjucks, requests, settings, _, utils, urls, z) {
     'use strict';
 
@@ -102,7 +102,7 @@ define('apps_widget',
         $apps_widget.find('.placeholder-text').hide();
         $apps_widget.find('.apps').sortable({
             onDrop: function($item) {
-                $item.removeClass('dragged').removeAttr('style')
+                $item.removeClass('dragged').removeAttr('style');
                 z.body.removeClass('dragging');
                 z.page.trigger('refresh_preview');
             }

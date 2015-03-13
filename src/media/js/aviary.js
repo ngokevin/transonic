@@ -1,4 +1,4 @@
-define('aviary', ['defer', 'jquery', 'l10n', 'z'], function(defer, $, l10n, z) {
+define('aviary', ['core/defer', 'jquery', 'core/l10n', 'core/z'], function(defer, $, l10n, z) {
     var gettext = l10n.gettext;
 
     // Read the Aviary docs for reference:
@@ -159,5 +159,5 @@ define('aviary', ['defer', 'jquery', 'l10n', 'z'], function(defer, $, l10n, z) {
 
     return {
         launchEditor: launchEditor
-    }
+    };
 });

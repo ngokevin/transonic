@@ -1,10 +1,10 @@
 /* A Transonic-specific preview tray that selects even when a single image
    and allows passing in an initial selected image. */
 define('preview_tray',
-    ['flipsnap', 'log', 'models', 'templates', 'capabilities', 'shothandles', 'underscore', 'z'],
+    ['flipsnap', 'core/log', 'core/models', 'templates', 'core/capabilities', 'shothandles', 'underscore', 'core/z'],
     function(Flipsnap, log, models, nunjucks, caps, handles, _, z) {
 
-    var console = log('previews');
+    var logger = log('previews');
 
     // Magic numbers!
     var THUMB_WIDTH = 150;
@@ -58,7 +58,7 @@ define('preview_tray',
         setActiveDot();
 
         handles.attachHandles(slider, $tray.find('.slider'));
-    }
+    };
 
     // Reinitialize Flipsnap positions on resize.
     z.doc.on('saferesize.preview-tray', function() {
@@ -66,15 +66,15 @@ define('preview_tray',
             var $tray = $(this);
             $tray.find('.content').css('margin', '0 ' + ($tray.width() - THUMB_WIDTH) / 2 + 'px');
         });
-        for (var i = 0, e; e = slider_pool[i++];) {
-            e.refresh();
+        for (var i = 0; i < slider_pool.length; i++) {
+            slider_pool[i].refresh();
         }
     });
 
     // We're leaving the page, so destroy Flipsnap.
     z.win.on('unloading.preview-tray', function() {
-        for (var i = 0, e; e = slider_pool[i++];) {
-            e.destroy();
+        for (var i = 0; i < slider_pool.length; i++) {
+            slider_pool[i].destroy();
         }
         slider_pool = [];
     });

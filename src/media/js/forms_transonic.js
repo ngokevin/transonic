@@ -1,10 +1,10 @@
 define('forms_transonic',
-    ['app_selector', 'cache', 'defer', 'feed', 'format', 'jquery', 'jquery.fakefilefield', 'l10n', 'log', 'nunjucks', 'requests', 'storage', 'urls', 'utils', 'utils_local', 'validate_transonic', 'z'],
+    ['app_selector', 'core/cache', 'core/defer', 'feed', 'core/format', 'jquery', 'jquery.fakefilefield', 'core/l10n', 'core/log', 'core/nunjucks', 'core/requests', 'core/storage', 'core/urls', 'core/utils', 'utils_local', 'validate_transonic', 'core/z'],
     function(app_select, cache, defer, feed, format, $, fakefilefield, l10n, log, nunjucks, requests, storage, urls, utils, utils_local, validate, z) {
     'use strict';
-    var format = format.format;
+    format = format.format;
     var gettext = l10n.gettext;
-    var console = log('forms_transonic');
+    var logger = log('forms_transonic');
 
     var feed_app = function($form, slug) {
         /* Create or update FeedApp. */
@@ -57,7 +57,7 @@ define('forms_transonic',
             slug: $form.find('[name="slug"]').val(),
         };
         var $preview = $form.find('.fileinput .preview');
-        console.log(JSON.stringify(data));
+        logger.log(JSON.stringify(data));
 
         // Validate.
         var errors = {};
@@ -134,8 +134,7 @@ define('forms_transonic',
                                  modified so we'll just save it.
         */
         var data = {};
-        for (var i = 0; i < modified_regions.length; i++) {
-            var region = modified_regions[i];
+        modified_regions.forEach(function(region) {
             data[region] = [];
 
             var $region_feed = $feeds.find(format('.region-feed[data-region="{0}"]',
@@ -144,8 +143,8 @@ define('forms_transonic',
                 data[region].push([feed_element.getAttribute('data-type'),
                                    feed_element.getAttribute('data-id')]);
             });
-        }
-        console.log(JSON.stringify(data));
+        });
+        logger.log(JSON.stringify(data));
 
         // Validate.
         var errors = validate.feed_items(data);
